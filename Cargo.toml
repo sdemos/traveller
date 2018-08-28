@@ -1,0 +1,9 @@
+[package]
+name = "traveller"
+version = "0.1.0"
+authors = ["Stephen Demos <stephen@demos.zone>"]
+
+[dependencies]
+arrayvec = "0.4"
+bitflags = "1.0"
+rand = "0.5"
