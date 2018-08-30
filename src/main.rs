@@ -159,18 +159,20 @@ impl World {
         };
 
         // hydrographics percentage
-        let hydrographics = if size == 1 || size == 1 {
+        let hydrographics = if size == 0 || size == 1 {
             0
         } else {
             let mut dm = match atmosphere {
                 0 | 1 | 10 | 11 | 12 => -4,
                 _ => 0,
             };
-            dm += match temperature {
-                Temperature::Hot => -2,
-                Temperature::Roasting => -6,
-                _ => 0,
-            };
+            if atmosphere != 13 {
+                dm += match temperature {
+                    Temperature::Hot => -2,
+                    Temperature::Roasting => -6,
+                    _ => 0,
+                };
+            }
             dm += size as i8;
             dm += -7;
             rollnd6dm(2, dm)
